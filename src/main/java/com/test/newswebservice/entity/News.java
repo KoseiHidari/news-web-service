@@ -6,18 +6,12 @@ import java.util.Date;
 @Entity
 @Table(name = "news")
 public class News {
+
     @Id
-//   @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue
     private Integer id;
-
-    @Column(name = "title")
     private String title;
-
-    @Column(name = "text")
     private String text;
-
-    @Column(name = "date")
     private Date date;
 
     public News() {

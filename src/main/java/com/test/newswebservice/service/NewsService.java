@@ -1,12 +1,54 @@
 package com.test.newswebservice.service;
 
 import com.test.newswebservice.entity.News;
-import org.springframework.web.bind.annotation.*;
+import com.test.newswebservice.repository.NewsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@RestController
-public interface NewsService {
-    void create(News news);//создание новости
-    News read(Integer id);//чрение новости по ID
-    boolean update(News news, Integer id);// редактирование новости по ID в соответствии с новым news
-    boolean delete(Integer id); // удаление новости по ID
+import java.util.List;
+
+@Service
+public class NewsService {
+    @Autowired
+    private NewsRepository newsRepository;
+
+    //для POST методов
+    public News saveNews(News news) {
+        return newsRepository.save(news);
+    }
+
+    //для всех
+    public List<News> saveAllNews(List<News> allNews) {
+        return newsRepository.saveAll(allNews);
+    }
+
+    //для GET методов
+    public List<News> getAllNews() {
+        return newsRepository.findAll();
+    }
+
+    public News getNewsByID(Integer id) {
+        return newsRepository.findById(id).orElse(null);
+    }
+
+    //для удаления по ID
+    public boolean deleteNews(Integer id) {
+        if (newsRepository.existsById(id)) {
+            newsRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
+
+    //для изменения по ID
+    public boolean updateByID (News news, Integer id) {
+        if (newsRepository.existsById(id)) {
+            news.setId(id);
+            newsRepository.save(news);
+            return true;
+        }
+        return false;
+    }
+
+
 }
