@@ -10,16 +10,16 @@ public class Comments {
     @Id
     @GeneratedValue
     private Integer id;
-    private Integer id_news;
+    private Integer newsId;
     private Date date;
     private String text;
     private String username;
 
     public Comments(){}
 
-    public Comments(Integer id, Integer id_news, Date date, String text, String username) {
+    public Comments(Integer id, Integer newsId, Date date, String text, String username) {
         this.id = id;
-        this.id_news = id_news;
+        this.newsId = newsId;
         this.date = date;
         this.text = text;
         this.username = username;
@@ -34,12 +34,12 @@ public class Comments {
         this.id = id;
     }
 
-    public Integer getId_news() {
-        return id_news;
+    public Integer getNewsId() {
+        return newsId;
     }
 
-    public void setId_news(Integer id_news) {
-        this.id_news = id_news;
+    public void setNewsId(Integer newsId) {
+        this.newsId = newsId;
     }
 
     public Date getDate() {

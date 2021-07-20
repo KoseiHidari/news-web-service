@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface CommentsRepository extends JpaRepository<Comments, Integer> {
 
-    List<Comments> findCommentsById_news(Integer id_news);
+    List<Comments> findAllByNewsId(Integer newsId);
 }

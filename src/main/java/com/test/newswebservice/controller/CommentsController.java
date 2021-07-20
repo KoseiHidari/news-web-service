@@ -17,7 +17,7 @@ public class CommentsController {
     // сопоставление POST запросов
     @PostMapping("/news/{id}/add_comment")
     public ResponseEntity<?> addComment(@PathVariable Integer id, @RequestBody Comments comment){
-        comment.setId_news(id);
+        comment.setNewsId(id);
         commentsService.addComments(comment);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

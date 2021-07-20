@@ -29,8 +29,8 @@ public class CommentsService {
     }
 
     //получение списка коментариев по ID новости
-    public List<Comments> getCommentsByIdNews(Integer id_news) {
-        List<Comments> comments = commentsRepository.findCommentsById_news(id_news);
+    public List<Comments> getCommentsByIdNews(Integer newsId) {
+        List<Comments> comments = commentsRepository.findAllByNewsId(newsId);
         return comments;
     }
 
