@@ -20,7 +20,7 @@ public class NewsController {
         newsService.saveNews(news);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
+    @PostMapping("/add_all_news")
     public ResponseEntity<?> addAllNews(@RequestBody List<News> allNews){
         newsService.saveAllNews(allNews);
         return new ResponseEntity<>(HttpStatus.CREATED);

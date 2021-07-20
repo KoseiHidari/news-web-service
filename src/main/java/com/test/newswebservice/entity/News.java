@@ -14,8 +14,7 @@ public class News {
     private String text;
     private Date date;
 
-    public News() {
-    }
+    public News() {}
 
     public News (Integer id, String title, String text, Date date){
         this.id = id;
@@ -24,7 +23,7 @@ public class News {
         this.date = date;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
