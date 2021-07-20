@@ -37,7 +37,12 @@ public class CommentsService {
     //изменение комментария
     public boolean updateCommentsByID (Comments comment, Integer id) {
         if (commentsRepository.existsById(id)) {
+            Comments existingComment = commentsRepository.findById(id).orElse(null);
             comment.setId(id);
+            comment.setNewsId(existingComment.getNewsId());
+            existingComment.setText(comment.getText());
+            existingComment.setUsername(comment.getUsername());
+            existingComment.setDate(comment.getDate());
             commentsRepository.save(comment);
             return true;
         }

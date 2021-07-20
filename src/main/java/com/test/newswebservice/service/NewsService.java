@@ -43,7 +43,11 @@ public class NewsService {
     //для изменения по ID
     public boolean updateByID (News news, Integer id) {
         if (newsRepository.existsById(id)) {
+            News existingNews = newsRepository.findById(id).orElse(null);
             news.setId(id);
+            existingNews.setText(news.getText());
+            existingNews.setTitle(news.getTitle());
+            existingNews.setDate(news.getDate());
             newsRepository.save(news);
             return true;
         }
