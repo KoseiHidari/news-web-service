@@ -12,26 +12,27 @@ public class NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
-    //для POST методов
+    //создание новой новости
     public News saveNews(News news) {
         return newsRepository.save(news);
     }
 
-    //для всех
+    //создание нескольких новых новостей
     public List<News> saveAllNews(List<News> allNews) {
         return newsRepository.saveAll(allNews);
     }
 
-    //для GET методов
+    //получение всей информации новостей
     public List<News> getAllNews() {
         return newsRepository.findAll();
     }
 
+    //получение одной новости по ID
     public News getNewsByID(Integer id) {
         return newsRepository.findById(id).orElse(null);
     }
 
-    //для удаления по ID
+    //удаление новости по ID
     public boolean deleteNews(Integer id) {
         if (newsRepository.existsById(id)) {
             newsRepository.deleteById(id);
@@ -40,7 +41,7 @@ public class NewsService {
         return false;
     }
 
-    //для изменения по ID
+    //изменение новости по ID
     public boolean updateByID (News news, Integer id) {
         if (newsRepository.existsById(id)) {
             News existingNews = newsRepository.findById(id).orElse(null);
@@ -53,6 +54,5 @@ public class NewsService {
         }
         return false;
     }
-
 
 }
