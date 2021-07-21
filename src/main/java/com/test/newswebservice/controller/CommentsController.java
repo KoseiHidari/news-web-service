@@ -4,9 +4,9 @@ import com.test.newswebservice.entity.Comments;
 import com.test.newswebservice.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,13 +34,14 @@ public class CommentsController {
     // сопоставление GET запросов
     @GetMapping("/news/{id}/comments")
     public ResponseEntity<Page> allCommentsByNews(@PathVariable Integer id,
-                                                  @RequestParam (name = "page", required = false,
+                                                  @RequestParam(name = "page", required = false,
                                                           defaultValue = "0") int page,
-                                                  @RequestParam (name = "size", required = false,
+                                                  @RequestParam(name = "size", required = false,
                                                           defaultValue = "4") int size,
-                                                  @PageableDefault(sort = {"date"},
-                                                          direction = Sort.Direction.DESC) Pageable pagination)
+                                                  @RequestParam(name = "sort", required = false,
+                                                  defaultValue = "date") String sort)
     {
+        Pageable pagination = PageRequest.of(page, size, Sort.by (sort));
         final Page<Comments> allComments = commentsService.getCommentsByIdNews(id, pagination);
         return allComments != null
                 ? new ResponseEntity<>(allComments, HttpStatus.OK)

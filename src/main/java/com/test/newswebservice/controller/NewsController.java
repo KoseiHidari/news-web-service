@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,12 +33,11 @@ public class NewsController {
 
     // сопоставление GET запросов
     @GetMapping("/news")
-    public ResponseEntity<Page> allNews(@RequestParam (name = "page", required = false, defaultValue = "0") int page,
-                                        @RequestParam (name = "size", required = false, defaultValue = "2") int size,
-                                        @PageableDefault (sort = {"date"}, direction = Sort.Direction.DESC)
-                                                    Pageable pagination)
+    public ResponseEntity<Page> allNews(@RequestParam(name = "page", required = false, defaultValue = "0") int page,
+                                        @RequestParam(name = "size", required = false, defaultValue = "2") int size,
+                                        @RequestParam(name = "sort", required = false, defaultValue = "date") String sort)
     {
-        pagination = PageRequest.of(page, size);
+        Pageable pagination = PageRequest.of(page, size, Sort.by(sort));
         final Page<News> allNews = newsService.getAllNews(pagination);
         return allNews != null
                 ? new ResponseEntity<>(allNews, HttpStatus.OK)
