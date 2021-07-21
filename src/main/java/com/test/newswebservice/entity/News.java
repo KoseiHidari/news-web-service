@@ -8,7 +8,7 @@ import java.util.Date;
 public class News {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String title;
     private String text;

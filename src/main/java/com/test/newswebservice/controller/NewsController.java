@@ -3,6 +3,11 @@ package com.test.newswebservice.controller;
 import com.test.newswebservice.entity.News;
 import com.test.newswebservice.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +18,7 @@ import java.util.List;
 public class NewsController {
     @Autowired
     private NewsService newsService;
+
 
     // сопоставление POST запросов
     @PostMapping("/add_news")
@@ -28,8 +34,13 @@ public class NewsController {
 
     // сопоставление GET запросов
     @GetMapping("/news")
-    public ResponseEntity<List> allNews() {
-        final List<News> allNews = newsService.getAllNews();
+    public ResponseEntity<Page> allNews(@RequestParam (name = "page", required = false, defaultValue = "0") int page,
+                                        @RequestParam (name = "size", required = false, defaultValue = "2") int size,
+                                        @PageableDefault (sort = {"date"}, direction = Sort.Direction.DESC)
+                                                    Pageable pagination)
+    {
+        pagination = PageRequest.of(page, size);
+        final Page<News> allNews = newsService.getAllNews(pagination);
         return allNews != null
                 ? new ResponseEntity<>(allNews, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -3,6 +3,8 @@ package com.test.newswebservice.service;
 import com.test.newswebservice.entity.Comments;
 import com.test.newswebservice.repository.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -29,8 +31,8 @@ public class CommentsService {
     }
 
     //получение списка коментариев по ID новости
-    public List<Comments> getCommentsByIdNews(Integer newsId) {
-        List<Comments> comments = commentsRepository.findAllByNewsId(newsId);
+    public Page<Comments> getCommentsByIdNews(Integer newsId, Pageable pagination) {
+        Page<Comments> comments = commentsRepository.findAllByNewsId(newsId, pagination);
         return comments;
     }
 

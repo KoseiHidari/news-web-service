@@ -3,6 +3,8 @@ package com.test.newswebservice.service;
 import com.test.newswebservice.entity.News;
 import com.test.newswebservice.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class NewsService {
     }
 
     //получение всей информации новостей
-    public List<News> getAllNews() {
-        return newsRepository.findAll();
+    public Page<News> getAllNews(Pageable pageable) {
+        return newsRepository.findAll(pageable);
     }
 
     //получение одной новости по ID

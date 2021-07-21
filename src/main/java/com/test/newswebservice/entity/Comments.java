@@ -8,7 +8,7 @@ import java.util.Date;
 public class Comments {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private Integer newsId;
     private Date date;
