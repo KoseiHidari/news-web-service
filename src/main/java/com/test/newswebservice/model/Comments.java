@@ -1,4 +1,4 @@
-package com.test.newswebservice.entity;
+package com.test.newswebservice.model;
 
 import javax.persistence.*;
 import java.util.Date;

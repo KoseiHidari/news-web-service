@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS News
+(
+    id    BIGSERIAL PRIMARY KEY ,
+    title  VARCHAR(200) NOT NULL ,
+    text VARCHAR(3000) NOT NULL ,
+    date DATE  NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Comments
+(
+    id    BIGSERIAL PRIMARY KEY ,
+    username  VARCHAR(200) NOT NULL ,
+    text VARCHAR(1000) NOT NULL ,
+    date DATE NOT NULL,
+    newsId BIGSERIAL NOT NULL
+);

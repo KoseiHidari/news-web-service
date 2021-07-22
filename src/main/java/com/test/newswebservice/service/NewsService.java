@@ -1,6 +1,6 @@
 package com.test.newswebservice.service;
 
-import com.test.newswebservice.entity.News;
+import com.test.newswebservice.model.News;
 import com.test.newswebservice.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

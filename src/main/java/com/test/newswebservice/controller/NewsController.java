@@ -1,6 +1,6 @@
 package com.test.newswebservice.controller;
 
-import com.test.newswebservice.entity.News;
+import com.test.newswebservice.model.News;
 import com.test.newswebservice.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

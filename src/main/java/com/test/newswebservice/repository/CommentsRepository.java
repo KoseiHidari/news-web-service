@@ -1,6 +1,6 @@
 package com.test.newswebservice.repository;
 
-import com.test.newswebservice.entity.Comments;
+import com.test.newswebservice.model.Comments;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

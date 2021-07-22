@@ -1,6 +1,6 @@
 package com.test.newswebservice.controller;
 
-import com.test.newswebservice.entity.Comments;
+import com.test.newswebservice.model.Comments;
 import com.test.newswebservice.service.CommentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

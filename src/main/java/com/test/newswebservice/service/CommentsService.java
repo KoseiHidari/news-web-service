@@ -1,11 +1,10 @@
 package com.test.newswebservice.service;
 
-import com.test.newswebservice.entity.Comments;
+import com.test.newswebservice.model.Comments;
 import com.test.newswebservice.repository.CommentsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
